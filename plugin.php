@@ -1,5 +1,5 @@
 <?php
-namespace RekordThemeEssential;
+namespace RekordPaidMembershipsAddon;
 
 class Plugin {
 
@@ -56,15 +56,15 @@ class Plugin {
         
        
         
-        //Elementor Widgets
-		require_once( __DIR__ . '/elementor-widgets/rekord_slider.php' );
-        require_once( __DIR__ . '/elementor-widgets/track_carousel.php' );
-        require_once( __DIR__ . '/elementor-widgets/post_carousel.php' );
-        require_once( __DIR__ . '/elementor-widgets/events_carousel.php' );
-        require_once( __DIR__ . '/elementor-widgets/rekord_tabs.php' );
-		require_once( __DIR__ . '/elementor-widgets/events-counter.php' );
-		require_once( __DIR__ . '/elementor-widgets/podcasts.php' );
-		require_once( __DIR__ . '/elementor-widgets/podcasts_featured.php' );
+        // //Elementor Widgets
+		// require_once( __DIR__ . '/elementor-widgets/rekord_slider.php' );
+        // require_once( __DIR__ . '/elementor-widgets/track_carousel.php' );
+        // require_once( __DIR__ . '/elementor-widgets/post_carousel.php' );
+        // require_once( __DIR__ . '/elementor-widgets/events_carousel.php' );
+        // require_once( __DIR__ . '/elementor-widgets/rekord_tabs.php' );
+		// require_once( __DIR__ . '/elementor-widgets/events-counter.php' );
+		// require_once( __DIR__ . '/elementor-widgets/podcasts.php' );
+		// require_once( __DIR__ . '/elementor-widgets/podcasts_featured.php' );
  
 
 	}
@@ -81,15 +81,15 @@ class Plugin {
 		// Its is now safe to include Widgets files
 		$this->include_widgets_files();
 
-		// Register Widgets
-		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Rekord_Slider() );
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Track_Carousel() );
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Post_Carousel() );
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Events_Carousel() );
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Rekord_Tabs() );
-		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Events_Counter() );
-		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Rekord_Podcasts() );
-		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Rekord_Podcasts_Featured() );
+		// // Register Widgets
+		// \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Rekord_Slider() );
+        // \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Track_Carousel() );
+        // \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Post_Carousel() );
+        // \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Events_Carousel() );
+        // \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Rekord_Tabs() );
+		// \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Events_Counter() );
+		// \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Rekord_Podcasts() );
+		// \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Rekord_Podcasts_Featured() );
 	
 	}
 
@@ -104,10 +104,10 @@ class Plugin {
 	public function __construct() {
 
 		// Register widget scripts
-		add_action( 'elementor/frontend/after_register_scripts', [ $this, 'widget_scripts' ] );
+		// add_action( 'elementor/frontend/after_register_scripts', [ $this, 'widget_scripts' ] );
 
-		// Register widgets
-		add_action( 'elementor/widgets/widgets_registered', [ $this, 'register_widgets' ] );
+		// // Register widgets
+		// add_action( 'elementor/widgets/widgets_registered', [ $this, 'register_widgets' ] );
 
 
 

@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name: Rekord Theme Essential
+ * Plugin Name: Rekord Paid Memberships Addon
  * Description: A must have plugin to enhance Rekord theme functionality.
  * Plugin URI:  https://xvelopers.com/
- * Version:     1.3.7
+ * Version:     1.0.0
  * Author:      Nomi
  * Author URI:  https://xvelopers.com/
  * Text Domain: rekord
@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * Any custom code should go inside Plugin Class in the plugin.php file.
  * @since 1.2.0
  */
-final class Rekord_Theme_Essential {
+final class Rekord_Paid_Memberships_Addon {
 
 	/**
 	 * Plugin Version
@@ -89,35 +89,47 @@ final class Rekord_Theme_Essential {
 	 * @access public
 	 */
 	public function init() {
-        
-        require_once( __DIR__ . '/inc/custom-posts.php' );
+		
+		
+		/**
+		 * Tell PMPro to look for templates in this plugin's templates/ folder.
+		 */
+		function my_pmpro_pages_custom_template_path( $templates, $page_name ) {		
+			$templates[] = plugin_dir_path(__FILE__) . 'paid-memberships-pro/pages/' . $page_name . '.php';	
+			
+			return $templates;
+		}
+		add_filter( 'pmpro_pages_custom_template_path', 'my_pmpro_pages_custom_template_path', 10, 2 );
+
+
+   	   	require_once( __DIR__ . '/paid-memberships-pro/shortcodes/pmpro_signup.php' );
         
         //WP Widgets
-        require_once( __DIR__ . '/wp-widgets/xv_latest_posts_widget.php' );
-        require_once( __DIR__ . '/wp-widgets/xv_latest_tracks_widget.php' );
-        require_once( __DIR__ . '/wp-widgets/xv_latest_videos_widget.php' );
-        require_once( __DIR__ . '/wp-widgets/xv_latest_events_widget.php' );
-        require_once( __DIR__ . '/wp-widgets/xv_latest_tracks_widget.php' );
-        require_once( __DIR__ . '/wp-widgets/xv_latest_artists_widget.php' );
+        // require_once( __DIR__ . '/wp-widgets/xv_latest_posts_widget.php' );
+        // require_once( __DIR__ . '/wp-widgets/xv_latest_tracks_widget.php' );
+        // require_once( __DIR__ . '/wp-widgets/xv_latest_videos_widget.php' );
+        // require_once( __DIR__ . '/wp-widgets/xv_latest_events_widget.php' );
+        // require_once( __DIR__ . '/wp-widgets/xv_latest_tracks_widget.php' );
+        // require_once( __DIR__ . '/wp-widgets/xv_latest_artists_widget.php' );
         
 
-		// Check if Elementor installed and activated
-		if ( ! did_action( 'elementor/loaded' ) ) {
-			add_action( 'admin_notices', array( $this, 'admin_notice_missing_main_plugin' ) );
-			return;
-		}
+		// // Check if Elementor installed and activated
+		// if ( ! did_action( 'elementor/loaded' ) ) {
+		// 	add_action( 'admin_notices', array( $this, 'admin_notice_missing_main_plugin' ) );
+		// 	return;
+		// }
 
-		// Check for required Elementor version
-		if ( ! version_compare( ELEMENTOR_VERSION, self::MINIMUM_ELEMENTOR_VERSION, '>=' ) ) {
-			add_action( 'admin_notices', array( $this, 'admin_notice_minimum_elementor_version' ) );
-			return;
-		}
+		// // Check for required Elementor version
+		// if ( ! version_compare( ELEMENTOR_VERSION, self::MINIMUM_ELEMENTOR_VERSION, '>=' ) ) {
+		// 	add_action( 'admin_notices', array( $this, 'admin_notice_minimum_elementor_version' ) );
+		// 	return;
+		// }
 
-		// Check for required PHP version
-		if ( version_compare( PHP_VERSION, self::MINIMUM_PHP_VERSION, '<' ) ) {
-			add_action( 'admin_notices', array( $this, 'admin_notice_minimum_php_version' ) );
-			return;
-		}
+		// // Check for required PHP version
+		// if ( version_compare( PHP_VERSION, self::MINIMUM_PHP_VERSION, '<' ) ) {
+		// 	add_action( 'admin_notices', array( $this, 'admin_notice_minimum_php_version' ) );
+		// 	return;
+		// }
 
 		// Once we get here, We have passed all validation checks so we can safely include our plugin
 		require_once( 'plugin.php' );
@@ -196,4 +208,4 @@ final class Rekord_Theme_Essential {
 }
 
 // Instantiate Elementor_Hello_World.
-new Rekord_Theme_Essential();
+new Rekord_Paid_Memberships_Addon();
